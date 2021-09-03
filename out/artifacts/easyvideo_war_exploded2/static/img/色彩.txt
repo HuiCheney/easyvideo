@@ -1,0 +1,6 @@
+linear-gradient(60deg,#f77451,#e9485c)
+
+start：
+#f77451
+end:
+#e9485c

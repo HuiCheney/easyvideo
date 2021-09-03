@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>软帝短视频 · 记录美好生活</title>
+		<link rel="shortcut icon" type="image/png" href="./static/img/softeem_icon.png" />
+		<link rel="stylesheet" href="./static/layui/css/layui.css">
+		<link rel="stylesheet" type="text/css" href="./static/css/index.css" />
+		<link rel="stylesheet" type="text/css" href="./static/font-awesome-4.7.0/css/font-awesome.min.css" />
+	</head>
+	<body class="layui-layout-body">
+
+		<div class="layui-layout layui-layout-admin">
+			<div class="layui-header">
+				<div class="layui-logo">
+					<img src="./static/img/softeem_logo.png" width="110px" />
+				</div>
+				<ul class="layui-nav layui-layout-right">
+					<li class="layui-nav-item">
+						<img src="./static/img/photo.jpg" class="layui-nav-img" />
+						秋小愚👅
+					</li>
+					<li class="layui-nav-item"><a href="login.html">退出登录</a></li>
+				</ul>
+			</div>
+		</div>
+
+
+		<div class="layui-row" style="background-color: #F7F8F9;">
+			<div class="layui-col-md10 layui-col-md-offset1">
+
+				<div class="layui-row">
+					<div class="layui-col-md3" style="min-height: 650px;">
+
+						<div class="menu">
+							<div class="menu_box">
+
+								<div class="user-info">
+									<div class="user-img">
+										<img src="static/img/photo.jpg">
+										<div class="user-text">秋小愚👅</div>
+									</div>
+
+									<div class="user-figure">
+										<div class="user-figure-item">
+											<div class="figure">
+												0
+											</div>
+											<div class="text">
+												获赞
+											</div>
+										</div>
+
+										<div class="user-figure-item">
+											<div class="figure">
+												9
+											</div>
+											<div class="text">
+												关注
+											</div>
+										</div>
+
+										<div class="user-figure-item">
+											<div class="figure">
+												19
+											</div>
+											<div class="text">
+												粉丝
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="user-menu">
+									<div class="group">
+										<div class="title">发布视频</div>
+										<div class="container" >
+											<a href="#/upload">
+												<div class="item" id="publish-btn" data-menu="menu-item">
+													<div class="icon">
+														<span class="fa fa-upload"></span>
+													</div>上传视频
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="group">
+										<div class="title">内容管理</div>
+										<div class="container" >
+											<a href="#/manage">
+												<div class="item" id="videolist-btn" data-menu="menu-item">
+													<div class="icon">
+														<span class="fa fa-address-book"></span>
+													</div>视频管理
+												</div>
+											</a></div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+					<div class="layui-col-md9" style="min-height: 650px;">
+						<!--start publish-video-->
+						<div class="card-container" id="publish-video" style="display: none;">
+
+							<div class="card-layout">
+								<div class="title">
+									&nbsp;
+								</div>
+								<div class="title-container">
+									<div class="upload-title">
+										发布视频
+									</div>
+								</div>
+								<div class="container-content" id="upload-container">
+									<div class="upload">
+										<label class="upload-btn">
+											<div class="box">
+												<span class="fa fa-cloud-upload fa-5x"></span>
+												<div class="desc"><span class="btn">点击上传 </span>或直接将视频文件拖入此区域</div>
+												<div class="info-desc">为了更好的观看体验，推荐上传9:16的竖版视频</div>
+											</div>
+											<input class="upload-btn-input" type="file" name="upload-btn" accept="video/mp4,video/x-m4v,video/*" style="display: none;">
+										</label>
+
+									</div>
+									<div class="info">
+										<div class="info-item">
+											<p class="title">视频格式</p>
+											<p class="desc">支持常用视频格式，推荐使用mp4、webm</p>
+										</div>
+										<div class="info-item">
+											<p class="title">视频大小</p>
+											<p class="desc">视频文件大小不超过4G</p>
+										</div>
+										<div class="info-item">
+											<p class="title">视频分辨率</p>
+											<p class="desc">分辨率为720p（1280x720）及以上</p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+						<!--end publish-video-->
+
+						<!--start video-list  -->
+						<div class="card-container" id="video-list" style="display: none;">
+
+							<div class="card-layout">
+								<div class="title">
+									&nbsp;
+								</div>
+								<div class="title-container">
+									<div class="upload-title">
+										视频管理
+									</div>
+								</div>
+
+								<div class="container-menu">
+									<div class="layui-tab">
+										<div class="menu-box-info">
+											<div class="content-header-status">
+												状态
+											</div>
+											<ul class="layui-tab-title">
+												<li class="layui-this">全部视频</li>
+												<li>已经发布</li>
+												<li>审核中</li>
+												<li>未通过</li>
+											</ul>
+											<div class="video-count">
+												共1个视频
+											</div>
+										</div>
+										<div class="layui-tab-content video-list-content">
+											<div class="layui-tab-item layui-show">
+												<table class="layui-table" lay-skin="nob" lay-size="bg">
+													<colgroup>
+														<col width="150">
+														<col>
+													</colgroup>
+													<tbody>
+														<tr>
+															<td>
+																<img class="video-img" src="static/img/v1.jpg">
+															</td>
+															<td>
+																<div class="ms">男神。。。</div>
+																<div class="sxb">
+																</div>
+																<div class="sj">
+																	不适宜公开
+																	2019年12月04日 17:08
+																</div>
+															</td>
+
+														</tr>
+														<tr>
+															<td><img class="video-img" src="static/img/v2.jpg"></td>
+															<td>
+																<div class="ms">男神。。。</div>
+																<div class="sxb">
+																</div>
+																<div class="sj">
+																	不适宜公开
+																	2019年12月04日 17:08
+																	
+																</div>
+															</td>
+														</tr>
+												
+													</tbody>
+												</table>
+												<div id="test1"></div>
+											</div>
+											<div class="layui-tab-item">内容2</div>
+											<div class="layui-tab-item">内容3</div>
+											<div class="layui-tab-item">内容4</div>
+										</div>
+									</div>
+								</div>
+
+
+
+							</div>
+							<!--end video-list  -->
+						</div>
+					</div>
+
+				</div>
+			</div>
+	</body>
+	<script src="./static/js/jquery-3.1.0.js"></script>
+	<script src="./static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		
+		$(function(){
+		    //默认
+			$('#publish-btn').addClass("active");
+			$('#publish-video').css({'display':'block'});
+			
+			$('#publish-btn').click(function(){
+				  $('#publish-btn').addClass("active");
+				  $('#videolist-btn').removeClass("active");
+				  $('#video-list').css({'display':'none'});
+				  $('#publish-video').css({'display':'block'});
+			});
+			$('#videolist-btn').click(function(){
+				   $('#videolist-btn').addClass("active");
+				   $('#publish-btn').removeClass("active");
+				  $('#publish-video').css({'display':'none'});
+				  $('#video-list').css({'display':'block'});
+				  
+			});
+		});
+		
+		
+		
+		//JavaScript代码区域
+		layui.use([
+			'element',
+			'laypage'
+		], function() {
+			var element = layui.element;
+
+			var laypage = layui.laypage;
+
+			//执行一个laypage实例
+			laypage.render({
+				elem: 'test1' ,//注意，这里的 test1 是 ID，不用加 # 号
+				height:20,
+				count: 50 //数据总数，从服务端得到
+			});
+
+		});
+	</script>
+</html>

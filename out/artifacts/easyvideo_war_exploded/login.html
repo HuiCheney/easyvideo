@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,shrink-to-fit=no">
+		<title>软帝短视频 · 记录美好生活</title>
+		<link rel="shortcut icon" type="image/png" href="static/img/softeem_icon.png" />
+
+<!--		<link rel="stylesheet" type="text/css" href="./static/css/base.css" />-->
+		<link rel="stylesheet" href="static/css/base.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="static/css/login.css" />
+	</head>
+	<body style="overflow:scroll">
+
+
+		<div class="main-box">
+
+			<div class="page-wrap">
+				<div class="logo-wrap">
+					<a href="index.html">
+					<img src="static/img/softeem_logo.png" alt="logo" width="120px">
+					</a>
+				</div>
+
+				<div class="page-body">
+					<div id="wrapper" class="login-page">
+						<div id="login_form" class="form">
+							<form class="register-form">
+								<input type="text" placeholder="手机号" value="admin" id="r_user_name" />
+								<input type="password" placeholder="密码" id="r_password" />
+								<input type="text" placeholder="电子邮件" id="r_emial" />
+								<button id="create" type="button">创建账户</button>
+								<p class="message">已经有了一个账户? <a href="#">立刻登录</a></p>
+							</form>
+							<form class="login-form">
+								<p id="p_title">用户登录</p>
+								<input type="text" placeholder="用户名" id="user_name" />
+								<input type="password" placeholder="密码" id="password" />
+								<button id="login" type="button">登　录</button>
+								<p class="message">还没有账户? <a href="#">立刻创建</a></p>
+							</form>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+		<script src="static/js/jquery-3.2.1.min.js"></script>
+		<script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+
+		<script type="text/javascript">
+			function check_login() {
+				var name = $("#user_name").val();
+				var pass = $("#password").val();
+
+				$.("user_login?user_name=" + name + "&password=" + pass, function () {
+					if (data == 1) {
+						alert("登录成功！");
+						$("#user_name").val("");
+						$("#password").val("");
+						$(location).attr('href', 'index.html');
+					} else {
+						$("#login_form").removeClass('shake_effect');
+						setTimeout(function () {
+							$("#login_form").addClass('shake_effect')
+						});
+					});
+				})
+
+
+
+			function check_register() {
+				var name = $("#r_user_name").val();
+				var pass = $("#r_password").val();
+				var email = $("r_email").val();
+				if (name != "" && pass != "" && email != "") {
+					layer.msg("注册成功！");
+					$("#user_name").val("");
+					$("#password").val("");
+				} else {
+					$("#login_form").removeClass('shake_effect');
+					setTimeout(function() {
+						$("#login_form").addClass('shake_effect')
+					}, 1);
+				}
+			}
+			$(function() {
+				$("#create").click(function() {
+					check_register();
+					return false;
+				})
+				$("#login").click(function() {
+					check_login();
+					return false;
+				})
+				$('.message a').click(function() {
+					$('form').animate({
+						height: 'toggle',
+						opacity: 'toggle'
+					}, 'slow');
+				});
+			})
+		</script>
+
+
+	</body>
+</html>

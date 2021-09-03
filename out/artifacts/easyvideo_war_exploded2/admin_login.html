@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>短视频后台管理系统</title>
+    <link rel="stylesheet" href="static/css/admin_login.css">
+    <link href="https://cdn.bootcss.com/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div id="app">
+        <div class="wrapper">
+            <div class="header">
+                <img src="./static/img/logo.png" alt="图片加载错误" width="80px">
+                <h1>一拍短视频后台管理系统</h1>
+            </div>
+            <div class="login_form animated heartBeat">
+                <div class="login_title">用户登入/LOGIN</div>
+                <input type="text" class="input_text"  id="name" placeholder="用户名:">
+                <input type="password" class="input_text" id="password"  placeholder="请输入密码:">
+                <button class="btn_login" id="loginBtn">立即登入</button>
+            </div>
+            <div class="copyright">
+                &copy;2020湖北大学 & 制作者:沙雕
+            </div>
+        </div>
+    </div>
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
+
+    <script>
+        $(function () {
+            // window.alert('我喜欢你')
+            $('#loginBtn').on('click',function () {
+                // alert("正在点击登入")
+                // location.href = 'main.html'
+                var username = $('#name').val();
+                var password = $('#password').val();
+                // alert("用户名"+username+"密码"+password)
+                $.get('admin_login?name='+username+'&password='+password,function (data) {
+                    // alert(data)
+                    if (data == 1){
+                        location.href='main.html'
+                    }else if (data == 0){
+                        layer.msg("密码错误")
+                    }else{
+                        layer.msg("用户不存在")
+                    }
+                })
+
+
+            })
+
+        })
+    </script>
+</body>
+</html>
